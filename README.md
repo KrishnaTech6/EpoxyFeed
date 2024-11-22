@@ -7,6 +7,7 @@ This is an example app to learn and use Epoxy Controller and models
 - **Epoxy** for building complex and dynamic UIs.
 - **Retrofit** for fetching posts from the **JSONPlaceholder** API.
 - **Glide** for efficient image loading.
+- **Shimmer Effect** for loading screen.
 - Uses **Epoxy models** and **controllers** to render lists with smooth performance.
 - **LiveData** and **ViewModel** for managing UI-related data lifecycle-aware.
 - Placeholder images while loading.
