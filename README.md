@@ -11,6 +11,7 @@ This is an example app to learn and use Epoxy Controller and models
 - Uses **Epoxy models** and **controllers** to render lists with smooth performance.
 - **LiveData** and **ViewModel** for managing UI-related data lifecycle-aware.
 - Placeholder images while loading.
+- Added fade animation to the post image in Epoxy Model
 
 ## Prerequisites
 
@@ -35,6 +36,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")  // Retrofit
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")  // Gson converter for Retrofit
     implementation ("com.github.bumptech.glide:glide:4.11.0")  // Glide
+    implementation ("com.facebook.shimmer:shimmer:0.5.0")
 }
 ```
 
