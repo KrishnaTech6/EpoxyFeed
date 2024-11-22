@@ -1,5 +1,6 @@
 package com.example.epoxyfeed
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,12 +19,17 @@ class PostViewModel : ViewModel() {
 
     fun fetchPostsAndUsers() {
         viewModelScope.launch {
-            val fetchedPosts = RetrofitInstance.apiService.getPosts()
-            _posts.postValue(fetchedPosts)
+            try {
+                val fetchedPosts = RetrofitInstance.apiService.getPosts()
+                _posts.postValue(fetchedPosts)
 
-            // Fetch users from a different endpoint (as an example)
-            val fetchedUsers = RetrofitInstance.apiService.getUsers()
-            _users.postValue(fetchedUsers)
+                // Fetch users from a different endpoint (as an example)
+                val fetchedUsers = RetrofitInstance.apiService.getUsers()
+                _users.postValue(fetchedUsers)
+            } catch (e: Exception) {
+                // Handle exceptions such as network errors or API issues
+                Log.e("fetchPostsAndUsers", "Error fetching data: ${e.message}")
+            }
         }
     }
 }
