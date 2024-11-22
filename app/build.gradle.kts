@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("kapt")
 }
 
 android {
@@ -47,13 +46,18 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    //epoxy for multiview rv
     implementation (libs.epoxy)
+    //retrofit for network call
     implementation (libs.retrofit)
-    implementation (libs.converter.gson)
     implementation (libs.logging.interceptor)
+    //gson
+    implementation (libs.converter.gson)
+    //glide- for image loading
+    implementation (libs.glide)
+
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.lifecycle.livedata.ktx)
 
-    implementation ("com.github.bumptech.glide:glide:4.15.1")
-    kapt ("com.github.bumptech.glide:compiler:4.15.1")
+    implementation (libs.shimmer)
 }

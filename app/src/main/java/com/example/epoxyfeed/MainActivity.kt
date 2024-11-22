@@ -28,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.posts.observe(this) { posts ->
             controller.posts = posts
         }
+        viewModel.isLoading.observe(this) { isLoading ->
+            controller.isLoading = isLoading
+        }
         viewModel.users.observe(this) { users ->
             controller.users = users
         }
