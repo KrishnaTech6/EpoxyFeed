@@ -21,6 +21,11 @@ class PostItemModel(
     }
 
     override fun bind(holder: Holder) {
+        holder.itemView.alpha = 0f
+        holder.itemView.animate()
+            .alpha(1f)
+            .setDuration(500)
+            .start()
         holder.titleTextView.text = title
         holder.bodyTextView.text = body
         Glide.with(holder.postImageView.context)
@@ -29,12 +34,19 @@ class PostItemModel(
             .into(holder.postImageView)
     }
 
+    override fun unbind(holder: Holder) {
+        super.unbind(holder)
+        holder.itemView.clearAnimation()
+    }
+
     class Holder : EpoxyHolder() {
+        lateinit var itemView: View
         lateinit var postImageView: ImageView
         lateinit var titleTextView: TextView
         lateinit var bodyTextView: TextView
 
         override fun bindView(itemView: View) {
+            this.itemView = itemView
             postImageView = itemView.findViewById(R.id.postImageView)
             titleTextView = itemView.findViewById(R.id.titleTextView)
             bodyTextView = itemView.findViewById(R.id.bodyTextView)

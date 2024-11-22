@@ -65,8 +65,6 @@ class PostController : EpoxyController() {
                 ).id(user.id).addTo(this)
             }
 
-
-
             // Add a title/section header
             SectionHeaderModel("Normal Posts").id("normal_posts").addTo(this)
 
