@@ -1,6 +1,8 @@
 # EpoxyFeed
-An Android app using Epoxy for dynamic list rendering with Retrofit to fetch posts from a remote API (JSONPlaceholder). It demonstrates how to efficiently use Epoxy models and controllers for scalable UI, integrate images with Glide, and manage data binding, making the app flexible and maintainable.
-This is an example app to learn and use Epoxy Controller and models 
+An Android app that demonstrates the use of **Epoxy** for dynamic list rendering, **Retrofit** for fetching data from a remote API, and various modern UI and performance techniques like **Shimmer Effect**, **SwipeRefreshLayout**, and more. 
+
+This project serves as a learning example for scalable UI design and efficient network integration.
+
 
 ## Features
 
@@ -12,13 +14,6 @@ This is an example app to learn and use Epoxy Controller and models
 - **LiveData** and **ViewModel** for managing UI-related data lifecycle-aware.
 - Placeholder images while loading.
 - Added fade animation to the post image in Epoxy Model
-
-## Prerequisites
-
-- Android Studio
-- Kotlin
-- Android SDK
-- Retrofit, Epoxy, Glide dependencies
 
 ## Screenshots 
 
