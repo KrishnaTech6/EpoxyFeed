@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+    //Swipe refresh layout
+    implementation(libs.androidx.swiperefreshlayout)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

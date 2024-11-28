@@ -40,7 +40,7 @@ class PostViewModel(
     fun fetchPostsAndUsers() {
         viewModelScope.launch {
             try {
-                delay(5000) //simulate network delay
+                delay(3000) //simulate network delay
                 val fetchedPosts = RetrofitInstance.apiService.getPosts()
                 _posts.postValue(fetchedPosts)
 

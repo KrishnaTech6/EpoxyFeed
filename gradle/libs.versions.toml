@@ -16,11 +16,13 @@ activity = "1.9.3"
 constraintlayout = "2.2.0"
 retrofit = "2.11.0"
 shimmer = "0.5.0"
+swiperefreshlayout = "1.2.0-alpha01"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
 epoxy = { module = "com.airbnb.android:epoxy", version.ref = "epoxy" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
