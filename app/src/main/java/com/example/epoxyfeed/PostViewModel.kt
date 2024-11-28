@@ -8,10 +8,25 @@ import androidx.lifecycle.viewModelScope
 import com.example.epoxyfeed.models.Post
 import com.example.epoxyfeed.models.User
 import com.example.epoxyfeed.network.RetrofitInstance
+import com.example.epoxyfeed.utils.ConnectivityObserver
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class PostViewModel : ViewModel() {
+class PostViewModel(
+    private val connectivityObserver: ConnectivityObserver
+) : ViewModel() {
+
+    //To check internet connectivity
+    val isConnected = connectivityObserver.isConnected
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000L),
+            false
+        )
+
+
     private val _posts = MutableLiveData<List<Post>>()
     val posts: LiveData<List<Post>> get() = _posts
 
@@ -25,7 +40,6 @@ class PostViewModel : ViewModel() {
     fun fetchPostsAndUsers() {
         viewModelScope.launch {
             try {
-
                 delay(5000) //simulate network delay
                 val fetchedPosts = RetrofitInstance.apiService.getPosts()
                 _posts.postValue(fetchedPosts)

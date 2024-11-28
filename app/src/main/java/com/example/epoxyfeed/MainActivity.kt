@@ -1,16 +1,25 @@
 package com.example.epoxyfeed
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.epoxyfeed.epoxy.PostController
+import com.example.epoxyfeed.utils.AndroidConnectivityObserver
+import com.example.epoxyfeed.utils.PostViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-    private val viewModel: PostViewModel by viewModels()
+    private val viewModel: PostViewModel by viewModels {
+        PostViewModelFactory(AndroidConnectivityObserver(applicationContext))
+    }
     private val controller = PostController()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val tvIsInternetAvailable = findViewById<TextView>(R.id.no_internet)
         val epoxyRecyclerView: EpoxyRecyclerView = findViewById(R.id.epoxyRecyclerView)
         epoxyRecyclerView.setController(controller)
 
@@ -33,6 +43,13 @@ class MainActivity : AppCompatActivity() {
         }
         viewModel.users.observe(this) { users ->
             controller.users = users
+        }
+
+        lifecycleScope.launch{
+            viewModel.isConnected.collectLatest {
+                if(!it) tvIsInternetAvailable.isVisible = true
+                else tvIsInternetAvailable.isVisible = false
+            }
         }
 
         viewModel.fetchPostsAndUsers()
